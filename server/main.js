@@ -11,6 +11,11 @@ const env = process.env.NODE_ENV || 'development';
 // Load config for RethinkDB and koa
 const config = require(__dirname + "/config.js")
 
+const host = process.env.RETHINKDB_HOST;
+if (host) {
+  config.rethinkdb.host = host;
+  console.log(host);
+}
 const thinky = require('thinky')(config.rethinkdb);
 const r = thinky.r;
 const type = thinky.type;
