@@ -37,7 +37,7 @@ Article.ensureIndex("createdAt");
 router.get('/articles', function*(next) {
   yield next;
   // try {
-  const result = yield Article.limit(20).run({useOutdated:true});
+  const result = yield Article..orderBy({index: 'createdAt'}.limit(20).run({useOutdated:true});
   return this.body = result;
   // } catch (error) {
   //   return this.body = error;
